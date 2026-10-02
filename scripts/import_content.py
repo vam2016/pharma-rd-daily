@@ -86,7 +86,13 @@ def import_content(data, root, revise=False, dry_run=False):
         require(metadata(old, "permalink") == permalink, "修订不可改变 URL")
         if re.search(r"^updated_at:", old.split("---", 2)[1], re.M):
             require(updated > timestamp(metadata(old, "updated_at")), "修订时间必须晚于上次修订")
-        history = old.split(HISTORY, 1)[1].rstrip() if HISTORY in old else ""
+        if section == "notes":
+            require(metadata(old, "slug") == slug, "修订不可改变 slug")
+        if HISTORY in old:
+            history = old.split(HISTORY, 1)[1].rstrip()
+        else:
+            previous = re.search(r"^## 修订(?:记录|历史)\s*\n(.*)\Z", old, re.M | re.S)
+            history = previous.group(1).rstrip() if previous else ""
         history += f"\n- {updated.isoformat()}：{data['update_note']}"
     else:
         require(not revise, "目标文章不存在，不能修订")

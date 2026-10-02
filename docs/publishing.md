@@ -39,7 +39,7 @@ schema 为 `schemas/content.schema.json`。例子只用于格式说明，不是�
 
 从仓库目录运行：`python3 scripts/import_content.py --input /path/to/content.json --root .`。脚本校验并生成唯一的 Markdown 文件，不进行网络提交。可使用 `--dry-run` 核对目标路径；同 slug 的笔记不能以另一发布日期重复创建。随后通过 GitHub 提交文件。
 
-修订已有文件时使用 `--revise`，提供 `updated_at` 与非空 `update_note`，保持原 `date`、`slug` 和路径。脚本保留既有修订历史，并追加新的说明。正文为完整的新版本，来源变更应解释原因。
+修订已有文件时使用 `--revise`，提供 `updated_at` 与非空 `update_note`，保持原 `date`、`slug` 和路径。脚本保留既有修订历史，并追加新的说明。body 为完整的新正文，不含修订记录；脚本会保留并追加修订记录。来源变更应解释原因。
 
 ## 正文能力
 
