@@ -1,4 +1,0 @@
-为我运行“医药研发每日简报”，用中文面向临床研发统计师整理新的药物临床研究进展及统计解读。
-每次先通过 GitHub 读取 vam2016/pharma-rd-daily 的 main 分支 README.md、prompts/editorial.md、prompts/daily.md、templates/daily.md、docs/publishing.md 和近期日报，并以当前版本执行。不得把独立统计方法论文作为日报补位。
-按北京时间记录实际检索窗口，核验原始来源、分母、效应量、不确定性与安全性；不强制凑条数。将内容创建或修订到 _posts/YYYY-MM-DD-daily.md，保持既有网址和修订历史。只修改本任务内容文件。
-提交后读回核验文件和提交 SHA；能检查 Pages 时确认部署状态。仅在已核实时报告“已提交”或“网站已更新”，失败则说明环节并保留完整草稿。ChatGPT 通知不等于网站发布成功。

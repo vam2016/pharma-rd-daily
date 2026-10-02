@@ -1,4 +1,0 @@
-为我运行“临床试验统计方法精选”，用中文面向临床研发统计师整理近 7 天生物统计方法的新进展。
-每次先通过 GitHub 读取 vam2016/pharma-rd-daily 的 main 分支 README.md、prompts/editorial.md、prompts/statistics.md、templates/statistics.md、_data/topics.yml、docs/publishing.md 和近期方法精选，并以当前版本执行。
-围绕方法解决的问题、新意、假设、理论或模拟依据、适用边界，以及研发和设计启示组织内容；不要每次总结 Protocol/SAP 影响。明确全文/摘要/公开材料的实际阅读范围，无法核验的公式和参数不作确定陈述。专题不作为凑数配额。
-发布至 _posts/statistics/YYYY-MM-DD-statistical-methods.md，准确填写 topics，只修改本任务内容文件，保留网址和修订历史。提交后读回核验文件和提交 SHA；能检查 Pages 时确认部署状态。未确认成功不得宣称网站已更新，失败则说明环节并保留草稿。
