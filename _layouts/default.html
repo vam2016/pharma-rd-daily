@@ -4,17 +4,17 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
 <meta name="description" content="{{ page.summary | default: site.description | escape }}">
-<link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}?v=20261002-redesign">
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 {% if page.section %}{% assign section = site.data.sections[page.section] %}<link rel="alternate" type="application/atom+xml" title="{{ section.title | escape }}" href="{{ section.feed | absolute_url }}">{% endif %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 </head>
-<body>
+<body class="{% if page.section %}section-{{ page.section }}{% else %}section-home{% endif %}">
 <a class="skip" href="#main">跳转到正文</a>
-<header class="site-header"><a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a><nav aria-label="主导航">{% for entry in site.data.sections %}{% assign key = entry[0] %}{% assign section = entry[1] %}<a href="{{ section.url | relative_url }}"{% if page.section == key %} aria-current="page"{% endif %}>{{ section.title }}</a>{% endfor %}<a href="{{ '/subscribe/' | relative_url }}"{% if page.url == '/subscribe/' %} aria-current="page"{% endif %}>订阅</a></nav></header>
+<header class="site-header"><div class="header-inner"><a class="brand" href="{{ '/' | relative_url }}"><svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M6 25V7M6 25h21M10 20l6-8 5 4 6-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="12" r="2" fill="currentColor"/></svg><span>{{ site.title }}<small>临床证据与方法研究</small></span></a><nav aria-label="主导航">{% for entry in site.data.sections %}{% assign key = entry[0] %}{% assign section = entry[1] %}<a class="nav-{{ key }}" href="{{ section.url | relative_url }}"{% if page.section == key %} aria-current="page"{% endif %}>{{ section.title }}</a>{% endfor %}<a class="nav-subscribe" href="{{ '/subscribe/' | relative_url }}"{% if page.url == '/subscribe/' %} aria-current="page"{% endif %}>RSS 订阅</a></nav></div></header>
 <main id="main">{{ content }}</main>
-<footer class="site-footer"><p>临床研发中的统计判断，建立在明确的问题、可追溯的来源与透明的假设之上。</p><nav aria-label="页脚导航"><a href="{{ '/about/' | relative_url }}">关于与编写原则</a><a href="{{ '/subscribe/' | relative_url }}">RSS 订阅</a><a href="https://github.com/vam2016/pharma-rd-daily" target="_blank" rel="noopener noreferrer">内容版本</a></nav></footer>
-<script src="{{ '/assets/site.js' | relative_url }}" defer></script>
+<footer class="site-footer"><div class="footer-inner"><p class="footer-brand">{{ site.title }}</p><p>以可追溯的证据、透明的假设和审慎的解释，形成临床研发中的统计判断。</p><nav aria-label="页脚导航"><a href="{{ '/about/' | relative_url }}">关于与编写原则</a><a href="{{ '/subscribe/' | relative_url }}">RSS 订阅</a><a href="https://github.com/vam2016/pharma-rd-daily" target="_blank" rel="noopener noreferrer">内容版本 ↗</a></nav></div></footer>
+<script src="{{ '/assets/site.js' | relative_url }}?v=20261002-redesign" defer></script>
 {% if page.layout == 'post' or page.math %}<script src="{{ '/assets/math.js' | relative_url }}" defer></script>{% endif %}
 </body></html>

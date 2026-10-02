@@ -1,0 +1,13 @@
+{%- assign topic_post = include.post -%}
+{%- for item in site.data.topics -%}
+  {%- assign matched = false -%}
+  {%- if topic_post.topics -%}
+    {%- if topic_post.topics contains item.id -%}{%- assign matched = true -%}{%- endif -%}
+  {%- else -%}
+    {%- for tag in topic_post.tags -%}
+      {%- assign normalized_tag = tag | downcase -%}
+      {%- if item.aliases contains normalized_tag -%}{%- assign matched = true -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if matched -%}|{{ item.id }}|{%- endif -%}
+{%- endfor -%}

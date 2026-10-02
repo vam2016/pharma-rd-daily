@@ -1,0 +1,24 @@
+- id: estimand
+  title: 估计目标
+  aliases: [estimand, estimands, e9(r1), 估计目标]
+- id: missing-data
+  title: 缺失数据
+  aliases: [missing data, 缺失数据, mnar, mar, 敏感性分析]
+- id: interim
+  title: 期中分析与序贯设计
+  aliases: [group sequential, group-sequential, interim analysis, alpha spending, α消耗, 期中分析, 序贯设计]
+- id: bayesian
+  title: 贝叶斯与早期设计
+  aliases: [bayesian phase i-ii, bayesian, dose finding, 贝叶斯设计, 贝叶斯, 剂量探索]
+- id: sample-size
+  title: 样本量与重估
+  aliases: [sample size, ssr, 样本量, 样本量重估]
+- id: causal
+  title: 因果推断与外部对照
+  aliases: [causal inference, external control, hybrid control, 因果推断, 外部对照]
+- id: survival
+  title: 生存与纵向分析
+  aliases: [survival analysis, longitudinal, 生存分析, 纵向分析]
+- id: other
+  title: 其他方法进展
+  aliases: [其他方法进展]

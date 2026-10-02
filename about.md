@@ -11,11 +11,13 @@ math: true
 
 ## 内容组织
 
-**研发简报**：{{ site.data.sections.rd.description }}
+**药物临床研究**：{{ site.data.sections.rd.description }}
 
-**统计方法**：{{ site.data.sections.statistics.description }}
+**生物统计方法**：{{ site.data.sections.statistics.description }}
 
 **研究笔记**：{{ site.data.sections.notes.description }}
+
+研究进展围绕具体药物和临床研究展开统计解读。独立的方法学进展在生物统计方法栏目按专题阅读，避免两类内容交叉归档。
 
 ## 编写原则
 

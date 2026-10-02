@@ -4,9 +4,12 @@ date: "2026-10-02 10:00:00 +0800"
 section: statistics
 format: research_digest
 permalink: /statistics/2026-10-02/
+topics: ["bayesian", "interim", "sample-size", "missing-data"]
+updated_at: "2026-10-02T22:42:32+08:00"
+update_note: "补充固定方法专题分类；未有新增精选的估计目标不计入本期专题。"
 week: "2026-09-25 至 2026-10-02"
 summary: "本周重点关注 Bayesian 联合结局剂量探索的先验校准、Bayesian group-sequential 与 predictive-probability SSR、MNAR 数据融合，以及一个 O'Brien-Fleming + conditional-power SSR 的真实设计案例。"
-tags: ["estimand", "missing data", "MNAR", "group sequential", "interim analysis", "alpha spending", "Bayesian Phase I-II", "sample size", "SSR"]
+tags: [ "missing data", "MNAR", "group sequential", "interim analysis", "alpha spending", "Bayesian Phase I-II", "sample size", "SSR"]
 ---
 
 ## 本周判断
@@ -104,3 +107,8 @@ SSR 使用 final success 的 Bayesian predictive probability。若当前计划�
 - **MNAR：** 敏感性参数的来源是什么？哪些辅助变量或 external/validation data 能提供识别信息？关键 shadow-variable / transportability / missingness 假设是否有临床和数据层面的依据？
 - **Estimand：** 本周没有新的 E9(R1) 文件，但 adaptive decision rule 仍应与 estimand 对齐。例如在 non-proportional hazards 下，如果 log HR 的临床解释发生变化，期中 success criterion 和 SSR 所针对的 treatment-effect summary 是否仍然回答原来的临床问题？
 - **监管跟踪：** ICH E20 Step 4 在 2026 年 10 月被列为预期里程碑。后续一旦正式发布，应优先核对其对 adaptive design 的预设、Type I error、simulation、DMC/operational bias、Bayesian methods 与 SSR 的最终表述。
+
+
+## 修订记录
+
+- 2026-10-02T22:42:32+08:00：添加固定方法专题分类，仅标记本期实质性精选所覆盖的专题；正文方法解读及原始来源不变。

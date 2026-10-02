@@ -1,5 +1,12 @@
 ---
 layout: default
 ---
-<section class="intro"><p class="eyebrow">面向临床研发统计师</p><h1>临床研发统计观察</h1><p class="intro-copy">跟踪研发证据，理解统计方法，积累研究判断。</p><p class="intro-detail">关注研究究竟回答了什么问题、分析依赖哪些假设，以及结论如何影响试验设计与临床解释。</p></section>
-<section class="archive" aria-labelledby="archive-title"><h2 id="archive-title" class="section-heading">最新内容</h2>{% include archive.html posts=site.posts all=true %}</section>
+<section class="home-intro"><p class="eyebrow">临床研发中的统计视角</p><h1>临床证据与统计方法</h1><p class="intro-copy">理解研究进展，追踪方法演进，积累研发判断。</p></section>
+<nav class="home-paths" aria-label="选择研究主题">{% for entry in site.data.sections %}{% assign key = entry[0] %}{% assign section = entry[1] %}{% unless key == 'notes' %}<a class="home-path path-{{ key }}" href="{{ section.url | relative_url }}"><span class="path-heading">{{ section.heading }}</span><span class="path-description">{{ section.description }}</span><span class="path-arrow" aria-hidden="true">→</span></a>{% endunless %}{% endfor %}</nav>
+<div class="research-streams" aria-label="两大研究主题">
+{% for entry in site.data.sections %}{% assign key = entry[0] %}{% assign section = entry[1] %}{% unless key == 'notes' %}{% assign posts = site.posts | where: 'section', key %}
+<section class="stream stream-{{ key }}" aria-labelledby="stream-{{ key }}-title"><div class="stream-top"><p class="eyebrow">{{ section.label }}</p><span class="cadence">{{ section.cadence }}</span></div><h2 id="stream-{{ key }}-title"><a href="{{ section.url | relative_url }}">{% if key == 'rd' %}最新临床研究解读{% else %}最新方法学精选{% endif %} <span aria-hidden="true">↗</span></a></h2>
+{% if key == 'statistics' %}<nav class="stream-topics" aria-label="方法专题快捷入口">{% for topic in site.data.topics limit:5 %}<a href="{{ section.url | relative_url }}?topic={{ topic.id }}">{{ topic.title }}</a>{% endfor %}</nav>{% endif %}
+<div class="stream-latest">{% for item in posts limit:1 %}{% include entry.html post=item preview=true %}{% else %}<p class="empty">{{ section.empty }}</p>{% endfor %}</div><a class="text-link" href="{{ section.url | relative_url }}">{% if key == 'rd' %}阅读全部研究进展{% else %}按专题浏览方法进展{% endif %}<span aria-hidden="true"> →</span></a></section>
+{% endunless %}{% endfor %}</div>
+<section class="notes-entry" aria-labelledby="notes-title"><p class="eyebrow">持续积累</p><h2 id="notes-title"><a href="{{ '/notes/' | relative_url }}">研究笔记 <span aria-hidden="true">↗</span></a></h2><p>{{ site.data.sections.notes.description }}</p>{% assign notes = site.posts | where: 'section', 'notes' %}{% for item in notes limit:1 %}{% include entry.html post=item preview=true %}{% endfor %}</section>

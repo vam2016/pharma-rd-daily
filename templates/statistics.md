@@ -6,8 +6,11 @@ format: research_digest
 permalink: /statistics/YYYY-MM-DD/
 week: "YYYY-MM-DD 至 YYYY-MM-DD"
 summary: "本期最有价值的方法学进展，以及其对临床研发、试验设计和统计决策的启示。"
+topics: ["estimand", "missing-data"]
 tags: ["estimand", "缺失数据"]
 ---
+
+<!-- topics 仅标注本期有实质性精选内容的专题。允许值见 _data/topics.yml；不要因为“本期无新增”的说明而标注该专题。 -->
 
 ## 本周判断
 

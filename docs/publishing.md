@@ -12,11 +12,19 @@
 
 一天多个讨论/笔记用不同 slug。日报和方法精选每天各一个文档；新增内容不要写入布局、配置、RSS 或首页。
 
+## 栏目边界与方法专题
+
+`rd` 仅发布药物临床研究进展与针对具体研究的统计解读。独立统计方法学论文和方法综述归入 `statistics`，不为日报凑条目。
+
+`statistics` 文章添加 `topics` 数组，只标记本期有实质性精选内容的方法专题；提到某专题“本周无新增”不构成分类依据。固定 ID 与名称见 `_data/topics.yml`：`estimand`、`missing-data`、`interim`、`bayesian`、`sample-size`、`causal`、`survival`、`other`。一篇简报可以覆盖多个专题；筛选结果按整篇简报显示。`tags` 为自由描述标签，不能替代新文章的专题分类。历史文章缺少 `topics` 时按专题别名兼容匹配。
+
+专题链接形如 `/statistics/?topic=missing-data`。关键词与专题同时生效。栏目 URL、文章 URL 与 RSS 地址沿用原约定。
+
 ## 方式一：ChatGPT 直接提交 Markdown
 
 1. 读取 README 与对应模板；整理公开内容，保留原始来源链接。用户明确选定的讨论内容可以作为笔记，不自动公开整个聊天。
 2. 检查目标路径。新文章使用 GitHub `create_file`；修订时先读取旧内容和当前 SHA，再 `update_file`。冲突时重新读取，不强制覆盖。
-3. front matter 必须有 `title`、带时区的 `date`、`section`、`format`、`summary`、`tags`。方法和笔记显式写稳定 `permalink`；笔记有固定 `slug`。日常日报按已有全局 permalink。
+3. front matter 必须有 `title`、带时区的 `date`、`section`、`format`、`summary`、`tags`；方法文章另有 `topics`。方法和笔记显式写稳定 `permalink`；笔记有固定 `slug`。日常日报按已有全局 permalink。
 4. 发布后重新读取文件并确认提交 SHA。只有写入成功才报告发布；搜索、权限、写入失败应如实报告，不能声称已发布。
 
 ## 方式二：标准 JSON 导入

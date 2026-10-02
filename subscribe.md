@@ -12,13 +12,13 @@ permalink: /subscribe/
 
 [订阅临床研发统计观察]({{ '/feed.xml' | absolute_url }})
 
-包含研发简报、统计方法，以及后续发布的研究笔记。
+包含药物临床研究、生物统计方法，以及后续发布的研究笔记。
 
 ## 按栏目订阅
 
-**[研发简报]({{ '/rd/feed.xml' | absolute_url }})**：每日研发证据与统计解读。
+**[药物临床研究]({{ '/rd/feed.xml' | absolute_url }})**：每日药物临床研究进展与统计解读。
 
-**[统计方法]({{ '/statistics/feed.xml' | absolute_url }})**：每周方法学精选。
+**[生物统计方法]({{ '/statistics/feed.xml' | absolute_url }})**：临床研究生物统计方法的每周精选。
 
 **[研究笔记]({{ '/notes/feed.xml' | absolute_url }})**：专题讨论与学习笔记，按需更新。
 

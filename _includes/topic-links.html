@@ -1,0 +1,2 @@
+{% capture topic_ids %}{% include topic-ids.html post=include.post %}{% endcapture %}
+<div class="topic-links" aria-label="本文方法专题">{% for topic in site.data.topics %}{% assign token = topic.id | prepend: '|' | append: '|' %}{% if topic_ids contains token %}<a href="{{ '/statistics/' | relative_url }}?topic={{ topic.id }}">{{ topic.title }}</a>{% endif %}{% endfor %}</div>

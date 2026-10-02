@@ -1,18 +1,27 @@
 rd:
-  title: 研发简报
+  title: 药物临床研究
+  heading: 药物临床研究进展
+  label: 研究进展 · 统计解读
   url: /rd/
   feed: /rd/feed.xml
-  description: 跟踪药物研发与临床研究进展，理解证据的演变与意义。
-  empty: 尚无研发简报。
+  description: 追踪药物临床研究的进展，从统计视角理解证据与研发决策。
+  cadence: 每日简报
+  empty: 新的临床研究进展发布后，将在这里持续归档。
 statistics:
-  title: 统计方法
+  title: 生物统计方法
+  heading: 生物统计方法进展
+  label: 方法前沿 · 专题阅读
   url: /statistics/
   feed: /statistics/feed.xml
-  description: 关注统计学研究的前沿进展，理解方法背后的思想与价值。
-  empty: 首期方法精选发布后，将在这里按日期归档。
+  description: 关注临床研究生物统计方法的演进，理解研究思想与设计启示。
+  cadence: 每周精选
+  empty: 新的方法学精选发布后，将在这里按专题和日期归档。
 notes:
   title: 研究笔记
+  heading: 研究笔记
+  label: 思考 · 讨论 · 学习
   url: /notes/
   feed: /notes/feed.xml
   description: 记录研究与学习中的思考，积累认识与经验。
-  empty: 尚无公开笔记。后续的专题讨论和学习笔记将在这里积累。
+  cadence: 持续积累
+  empty: 尚无公开笔记。后续选定的专题讨论和学习笔记将在这里积累。

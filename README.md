@@ -4,15 +4,23 @@
 
 面向临床研发统计师的研发证据、方法学进展和研究笔记。Jekyll + GitHub Pages 静态构建，无付费域名、服务器或运行时 API 密钥。
 
+## 两大主题与分类边界
+
+- **药物临床研究（section: rd）**：药物临床研究进展及统计解读。统计视角围绕具体药物、研究或证据展开；独立统计方法学论文与方法综述不作为日报补位内容。高质量新增不足时减少条目，不强行凑数。
+- **生物统计方法（section: statistics）**：临床研究生物统计方法的新论文、理论、设计和方法学报告；按固定方法专题归档。
+- **研究笔记（section: notes）**：用户选定的公开讨论、学习记录和持续思考，作为独立积累入口。
+
+发布任务读取本文档及最新模板后，应沿用以上分类边界。主题一中的统计解读不等同于主题二的方法学进展。
+
 ## 内容入口
 
 | 栏目 | 来源文件 | 页面 | 发布模板 |
 | --- | --- | --- | --- |
-| 研发简报 | `_posts/YYYY-MM-DD-daily.md` | `/rd/`，文章保留 `/briefs/YYYY-MM-DD/` | `templates/daily.md` |
-| 统计方法 | `_posts/statistics/YYYY-MM-DD-statistical-methods.md` | `/statistics/` | `templates/statistics.md` |
+| 药物临床研究 | `_posts/YYYY-MM-DD-daily.md` | `/rd/`，文章保留 `/briefs/YYYY-MM-DD/` | `templates/daily.md` |
+| 生物统计方法 | `_posts/statistics/YYYY-MM-DD-statistical-methods.md` | `/statistics/` | `templates/statistics.md` |
 | 研究笔记 | `_posts/notes/YYYY-MM-DD-stable-slug.md` | `/notes/` | `templates/note.md` |
 
-全部文章统一使用 `section` 与 `format` 元数据。布局、目录、公式、修订展示、搜索及 RSS 共用；栏目文案集中在 `_data/sections.yml`，类型名称在 `_data/formats.yml`。
+全部文章统一使用 `section` 与 `format` 元数据。布局、目录、公式、修订展示、搜索及 RSS 共用；栏目文案集中在 `_data/sections.yml`，类型名称在 `_data/formats.yml`，方法专题在 `_data/topics.yml`。方法文章使用 `topics` 专题 ID 数组，`tags` 保留为描述性标签；筛选不混用两大主题。
 
 ChatGPT 定时任务在发布前读取此文件和对应模板，仅创建或修订自己的内容文件。GitHub 提交触发 Pages 构建。任务名称：医药研发每日简报（每日 08:30）、临床试验统计方法精选（每周五 10:00），香港/北京时间。
 

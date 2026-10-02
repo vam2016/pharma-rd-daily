@@ -8,7 +8,8 @@ from pathlib import Path
 
 FORMATS = {"rd": {"daily_brief"}, "statistics": {"research_digest"}, "notes": {"discussion", "study_note"}}
 REQUIRED = {"schema_version", "section", "format", "title", "date", "summary", "tags", "body"}
-OPTIONAL = {"slug", "updated_at", "update_note"}
+OPTIONAL = {"slug", "updated_at", "update_note", "topics"}
+TOPICS = {"estimand", "missing-data", "interim", "bayesian", "sample-size", "causal", "survival", "other"}
 HISTORY = "\n\n<!-- content-revisions-v1 -->\n## 修订记录\n"
 
 
@@ -49,6 +50,11 @@ def import_content(data, root, revise=False, dry_run=False):
     tags = data["tags"]
     require(isinstance(tags, list) and all(isinstance(t, str) and t.strip() and len(t) <= 60 for t in tags), "tags 应为非空文本数组")
     require(len(tags) == len(set(tags)), "tags 不能重复")
+    topics = data.get("topics")
+    if topics is not None:
+        require(section == "statistics", "topics 仅适用于生物统计方法栏目")
+        require(isinstance(topics, list) and len(topics) > 0 and all(isinstance(t, str) and t in TOPICS for t in topics), "topics 必须为已定义的方法专题数组")
+        require(len(topics) == len(set(topics)), "topics 不能重复")
     date = timestamp(data["date"])
     require(date <= dt.datetime.now(dt.timezone(dt.timedelta(hours=8))), "不能发布未来日期的文章")
     day = date.strftime("%Y-%m-%d")
@@ -88,6 +94,12 @@ def import_content(data, root, revise=False, dry_run=False):
             require(updated > timestamp(metadata(old, "updated_at")), "修订时间必须晚于上次修订")
         if section == "notes":
             require(metadata(old, "slug") == slug, "修订不可改变 slug")
+        if topics is None and section == "statistics" and re.search(r"^topics:", old.split("---", 2)[1], re.M):
+            raw_topics = re.search(r"^topics:\s*(.*?)\s*$", old.split("---", 2)[1], re.M).group(1)
+            try:
+                topics = json.loads(raw_topics)
+            except ValueError:
+                raise ValueError("旧专题须为 JSON 风格的行内数组，请在修订输入中明确提供 topics")
         if HISTORY in old:
             history = old.split(HISTORY, 1)[1].rstrip()
         else:
@@ -99,6 +111,8 @@ def import_content(data, root, revise=False, dry_run=False):
         require("updated_at" not in data and "update_note" not in data, "新文章不能带修订元数据")
     header = {k: data[k] for k in ("title", "date", "section", "format", "summary", "tags")}
     header["permalink"] = permalink
+    if topics is not None:
+        header["topics"] = topics
     if slug:
         header["slug"] = slug
     if revise:

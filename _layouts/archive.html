@@ -2,5 +2,5 @@
 layout: default
 ---
 {% assign section = site.data.sections[page.section] %}{% assign posts = site.posts | where: 'section', page.section %}
-<section class="intro compact"><p class="eyebrow">临床研发统计观察 / {{ section.title }}</p><h1>{{ section.title }}</h1><p class="intro-copy">{{ section.description }}</p><p class="section-note">{% if page.section == 'rd' %}每日更新{% elsif page.section == 'statistics' %}每周精选{% else %}按专题积累{% endif %} · <a href="{{ section.feed | relative_url }}">订阅此栏目</a></p></section>
-<section class="archive" aria-label="{{ section.title }}归档">{% include archive.html posts=posts empty=section.empty %}</section>
+<section class="archive-intro"><p class="eyebrow">{{ section.label }}</p><h1>{{ section.heading }}</h1><p class="intro-copy">{{ section.description }}</p><div class="section-meta"><span>{{ section.cadence }}</span><span>{{ posts.size }} 篇归档</span><a href="{{ section.feed | relative_url }}">订阅此栏目 ↗</a></div></section>
+<section class="archive" aria-label="{{ section.title }}归档">{% include archive.html posts=posts empty=section.empty section=page.section %}</section>
