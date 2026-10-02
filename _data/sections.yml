@@ -2,17 +2,17 @@ rd:
   title: 研发简报
   url: /rd/
   feed: /rd/feed.xml
-  description: 从最新研发证据出发，讨论估计目标、分析策略和结果的临床解释。
+  description: 跟踪药物研发与临床研究进展，理解证据的演变与意义。
   empty: 尚无研发简报。
 statistics:
   title: 统计方法
   url: /statistics/
   feed: /statistics/feed.xml
-  description: 精选可能影响试验设计、Protocol 或 SAP 决策的新论文、监管文件与方法学进展。
+  description: 关注统计学研究的前沿进展，理解方法背后的思想与价值。
   empty: 首期方法精选发布后，将在这里按日期归档。
 notes:
   title: 研究笔记
   url: /notes/
   feed: /notes/feed.xml
-  description: 围绕统计问题展开讨论，记录推导、学习过程与可复用的实践经验。
+  description: 记录研究与学习中的思考，积累认识与经验。
   empty: 尚无公开笔记。后续的专题讨论和学习笔记将在这里积累。
