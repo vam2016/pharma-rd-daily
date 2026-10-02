@@ -1,5 +1,5 @@
-title: 医药研发每日简报
-description: 药物研发、临床试验与监管科学的每日专业简报
+title: 临床研发统计观察
+description: 面向临床研发统计师的研发证据、统计方法与研究笔记
 url: "https://vam2016.github.io"
 baseurl: "/pharma-rd-daily"
 timezone: Asia/Shanghai
@@ -10,10 +10,26 @@ kramdown:
   math_engine: mathjax
 permalink: /briefs/:year-:month-:day/
 future: false
-exclude: [README.md, templates, Gemfile, Gemfile.lock]
+exclude: [README.md, templates, docs, scripts, schemas, Gemfile, Gemfile.lock]
 defaults:
   - scope:
       path: ""
       type: posts
     values:
       layout: post
+      section: rd
+      format: daily_brief
+  - scope:
+      path: "_posts/statistics"
+      type: posts
+    values:
+      section: statistics
+      format: research_digest
+      permalink: /statistics/:year-:month-:day/
+  - scope:
+      path: "_posts/notes"
+      type: posts
+    values:
+      section: notes
+      format: study_note
+      permalink: /notes/:title/

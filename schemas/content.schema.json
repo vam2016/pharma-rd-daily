@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/vam2016/pharma-rd-daily/blob/main/schemas/content.schema.json",
+  "title": "Clinical R&D Statistics Content v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "section", "format", "title", "date", "summary", "tags", "body"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "section": {"enum": ["rd", "statistics", "notes"]},
+    "format": {"enum": ["daily_brief", "research_digest", "discussion", "study_note"]},
+    "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 100},
+    "title": {"type": "string", "minLength": 1, "maxLength": 200},
+    "date": {"type": "string", "format": "date-time", "pattern": "[+-]08:00$"},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 1200},
+    "tags": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 60}, "uniqueItems": true},
+    "body": {"type": "string", "minLength": 1},
+    "updated_at": {"type": "string", "format": "date-time", "pattern": "[+-]08:00$"},
+    "update_note": {"type": "string", "minLength": 1, "maxLength": 1200}
+  },
+  "allOf": [
+    {"if": {"properties": {"section": {"const": "rd"}}}, "then": {"properties": {"format": {"const": "daily_brief"}}, "not": {"required": ["slug"]}}},
+    {"if": {"properties": {"section": {"const": "statistics"}}}, "then": {"properties": {"format": {"const": "research_digest"}}, "not": {"required": ["slug"]}}},
+    {"if": {"properties": {"section": {"const": "notes"}}}, "then": {"required": ["slug"], "properties": {"format": {"enum": ["discussion", "study_note"]}}}}
+  ],
+  "dependentRequired": {"updated_at": ["update_note"], "update_note": ["updated_at"]}
+}

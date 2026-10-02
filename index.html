@@ -1,11 +1,5 @@
 ---
 layout: default
 ---
-<section class="intro"><p class="eyebrow">DRUG DEVELOPMENT / CLINICAL EVIDENCE</p><h1>医药研发每日简报</h1><p class="intro-copy">临床试验与监管进展，及其背后的统计学与临床价值。</p><div class="evidence-line" aria-label="简报覆盖领域"><span>临床试验</span><i></i><span>药物研发</span><i></i><span>注册与监管</span><i></i><span>统计方法</span></div></section>
-<section class="archive" aria-labelledby="archive-title"><div class="archive-heading"><h2 id="archive-title">日报归档</h2><span class="count">{{ site.posts.size }} 期简报</span></div>
-{% if site.posts.size > 0 %}
-<div class="archive-controls"><label class="search-label" for="search">搜索简报<input id="search" type="search" placeholder="药物、公司、适应症或方法学关键词" autocomplete="off"></label><label for="topic">主题<select id="topic"><option value="">全部主题</option><option>临床试验</option><option>药物研发</option><option>监管动态</option><option>统计方法</option></select></label></div>
-<div id="brief-list">{% for post in site.posts %}<article class="brief-card" data-search="{{ post.title | append: ' ' | append: post.summary | append: ' ' | append: post.content | strip_html | normalize_whitespace | escape }}" data-tags="{{ post.tags | join: '|' | escape }}"><div class="issue-meta"><time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y.%m.%d' }}</time>{% if forloop.first %}<span class="latest">最新一期</span>{% endif %}{% if post.updated_at %}<span class="revision">修订于 {{ post.updated_at | date: '%m.%d' }}</span>{% endif %}</div><div class="issue-body"><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3><p class="summary">{{ post.summary | escape }}</p>{% if post.highlights %}<ul class="highlights">{% for highlight in post.highlights limit: 5 %}<li>{{ highlight | escape }}</li>{% endfor %}</ul>{% endif %}<div class="card-bottom"><div class="tags">{% for tag in post.tags %}<span>{{ tag | escape }}</span>{% endfor %}</div><a class="read-link" href="{{ post.url | relative_url }}">阅读全文 <span aria-hidden="true">↗</span></a></div></div></article>{% endfor %}</div>
-<p id="no-results" class="empty" role="status" hidden>没有匹配的简报。请尝试其他关键词，或选择“全部主题”。</p><p class="search-count" id="search-count" aria-live="polite"></p>
-{% else %}<div class="empty"><span class="empty-label">等待首期简报</span><h3>新的研发进展将在这里归档。</h3><p>首期发布后，这里会显示摘要、来源和完整解读。</p></div>{% endif %}
-</section>
+<section class="intro"><p class="eyebrow">面向临床研发统计师</p><h1>临床研发统计观察</h1><p class="intro-copy">跟踪研发证据，理解统计方法，积累研究判断。</p><p class="intro-detail">关注研究究竟回答了什么问题、分析依赖哪些假设，以及结论如何影响试验设计与临床解释。</p></section>
+<section class="archive" aria-labelledby="archive-title"><h2 id="archive-title" class="section-heading">最新内容</h2>{% include archive.html posts=site.posts all=true %}</section>

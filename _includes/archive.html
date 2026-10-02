@@ -1,0 +1,5 @@
+{% assign posts = include.posts %}
+{% if posts.size > 0 %}
+<form class="archive-controls" role="search" onsubmit="return false"><label for="search">搜索正文<input id="search" type="search" placeholder="输入研究、终点或方法关键词" autocomplete="off"></label><label for="topic">主题<select id="topic"><option value="">全部主题</option>{% assign all_tags = posts | map: 'tags' | join: '|' | split: '|' | uniq | sort %}{% for tag in all_tags %}{% if tag != '' %}<option>{{ tag | escape }}</option>{% endif %}{% endfor %}</select></label>{% if include.all %}<label for="section-filter">栏目<select id="section-filter"><option value="">全部栏目</option>{% for entry in site.data.sections %}<option value="{{ entry[0] }}">{{ entry[1].title }}</option>{% endfor %}</select></label>{% endif %}</form>
+<div id="brief-list">{% for item in posts %}{% include entry.html post=item %}{% endfor %}</div><p id="no-results" class="empty" role="status" hidden>没有匹配的文章。请调整关键词或筛选条件。</p><p id="search-count" class="search-count" aria-live="polite"></p>
+{% else %}<p class="empty">{{ include.empty | default: '尚无公开文章。' }}</p>{% endif %}

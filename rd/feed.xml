@@ -1,4 +1,6 @@
 ---
 layout: null
+section: rd
+permalink: /rd/feed.xml
 ---
 {% include feed.xml %}

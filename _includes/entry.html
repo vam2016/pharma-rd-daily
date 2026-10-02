@@ -1,0 +1,7 @@
+{% assign post = include.post %}{% assign section_key = post.section | default: 'rd' %}{% assign section = site.data.sections[section_key] %}
+<article class="brief-card" data-section="{{ section_key }}" data-search="{{ post.title | append: ' ' | append: post.summary | append: ' ' | append: post.content | strip_html | normalize_whitespace | escape }}" data-tags="{{ post.tags | join: '|' | escape }}">
+<p class="issue-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y.%m.%d' }}</time> · {{ section.title }}{% if post.updated_at %}<span class="revision"> · 修订于 {{ post.updated_at | date: '%Y.%m.%d' }}</span>{% endif %}</p>
+<h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+<p class="summary">{{ post.summary | escape }}</p>
+{% if post.tags.size > 0 %}<p class="tags">{% for tag in post.tags %}<span>{{ tag | escape }}</span>{% endfor %}</p>{% endif %}
+</article>

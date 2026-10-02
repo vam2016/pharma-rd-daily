@@ -1,22 +1,33 @@
-# 医药研发每日简报
+# 临床研发统计观察
 
-由 ChatGPT 整理公开研发信息，GitHub Pages 发布按日期归档的静态简报。
+公开网站：https://vam2016.github.io/pharma-rd-daily/
 
-## 自动发布
+面向临床研发统计师的研发证据、方法学进展和研究笔记。Jekyll + GitHub Pages 静态构建，无付费域名、服务器或运行时 API 密钥。
 
-每次只需创建一个 `_posts/YYYY-MM-DD-daily.md` 文件。Jekyll 自动更新首页、历史归档和 RSS，不需要额外更新索引或运行 API。
+## 内容入口
 
-参照 `templates/daily.md`。日期使用北京时间；同一天只保留一期，修订已有文件需先读取当前 SHA。
+| 栏目 | 来源文件 | 页面 | 发布模板 |
+| --- | --- | --- | --- |
+| 研发简报 | `_posts/YYYY-MM-DD-daily.md` | `/rd/`，文章保留 `/briefs/YYYY-MM-DD/` | `templates/daily.md` |
+| 统计方法 | `_posts/statistics/YYYY-MM-DD-statistical-methods.md` | `/statistics/` | `templates/statistics.md` |
+| 研究笔记 | `_posts/notes/YYYY-MM-DD-stable-slug.md` | `/notes/` | `templates/note.md` |
 
-GitHub Pages 发布源：`main` 分支、仓库根目录。构建完成后访问 https://vam2016.github.io/pharma-rd-daily/ 。
+全部文章统一使用 `section` 与 `format` 元数据。布局、目录、公式、修订展示、搜索及 RSS 共用；栏目文案集中在 `_data/sections.yml`，类型名称在 `_data/formats.yml`。
 
-网站没有数据库、追踪脚本或付费 API；所有发布内容和源代码均公开。
+ChatGPT 定时任务在发布前读取此文件和对应模板，仅创建或修订自己的内容文件。GitHub 提交触发 Pages 构建。任务名称：医药研发每日简报（每日 08:30）、临床试验统计方法精选（每周五 10:00），香港/北京时间。
 
+## 发布与后续扩展
 
-## 公式、来源与修订
+详细约定见 [发布接口](docs/publishing.md)，JSON 格式见 [内容 schema](schemas/content.schema.json)。未来的 ChatGPT 讨论和学习笔记可以直接通过 GitHub 工具提交 Markdown，也可用 `scripts/import_content.py` 将标准 JSON 导入为 Markdown，再提交到 GitHub。当前没有匿名网络写入端点。
 
-Markdown 使用 kramdown 语法。行内公式同一行写 `$$RD=p_T-p_C$$`；独立公式将 `$$` 放在公式前后单独两行。网站将其渲染为数学公式。MathJax 从 jsDelivr 加载；若网络暂不可用，保留 TeX 原文并提示刷新，不丢失公式内容。
+## 阅读与订阅
 
-原始来源使用 `[标题](https://...)`，网页会在新标签页打开外部链接。禁止写入私人信息、脚本、ChatGPT 专属 UI 标记或 Liquid 模板指令。
+`/feed.xml` 为全部内容；`/rd/feed.xml`、`/statistics/feed.xml`、`/notes/feed.xml` 分别订阅栏目。订阅说明在 `/subscribe/`。
 
-修订已有日报时，保留原 `date` 和路径，添加 `updated_at: "YYYY-MM-DD HH:MM:SS +0800"` 与 `update_note: "修改说明"`，并在正文末尾追加修订记录。RSS 的文章 ID 保持稳定，updated 时间随修订更新。
+公式采用 Kramdown 数学语法：行内为同一行 `$$...$$`，独立公式将两个 `$$` 分别置于独立行。MathJax 渲染 GitHub Pages 生成的数学节点或分隔符。源码链接用标准 Markdown；代码使用带语言标识的代码块。`<details markdown="1"><summary>展开推导</summary>...` 可折叠长内容。
+
+修订必须保留日期、文件路径和 permalink，添加 `updated_at`、`update_note`，并追加正文修订记录。不得静默覆盖已有文章、修改历史 URL 或删除原来源。
+
+## 维护
+
+网站静态源码和内容均在 main。修改布局后检查 Pages 构建、现有日报 URL、栏目归档与订阅源；正文含公式时核查实际页面排版。模板、文档、schema 和脚本均排除于公开网页构建（仓库本身公开）。

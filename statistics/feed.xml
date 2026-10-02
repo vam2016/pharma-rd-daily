@@ -1,0 +1,6 @@
+---
+layout: null
+section: statistics
+permalink: /statistics/feed.xml
+---
+{% include feed.xml %}

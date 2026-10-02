@@ -1,6 +1,8 @@
 ---
 title: "医药研发每日专业简报｜YYYY-MM-DD"
 date: "YYYY-MM-DD 08:30:00 +0800"
+section: rd
+format: daily_brief
 week: "YYYY-MM-DD 至 YYYY-MM-DD"
 summary: "今日重点的两三句话摘要。"
 tags: ["临床试验", "药物研发", "监管动态", "统计方法"]
