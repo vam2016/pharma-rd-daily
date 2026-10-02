@@ -11,11 +11,11 @@ math: true
 
 ## 内容组织
 
-**研发简报**从每日公开信息出发，梳理试验结果、监管动态和研发事件，结合估计目标、分析人群、多重性、期中分析及不确定性展开案例解读。
+**研发简报**：{{ site.data.sections.rd.description }}
 
-**统计方法**按周筛选方法学论文、监管文件和实质性分析，重点讨论 estimand/E9(R1)、缺失数据、序贯设计、Bayesian Phase I–II 和样本量调整，以及它们对 Protocol 或 SAP 的影响。
+**统计方法**：{{ site.data.sections.statistics.description }}
 
-**研究笔记**用于积累专题讨论、公式推导、学习笔记和可复用的实践经验，按需更新。
+**研究笔记**：{{ site.data.sections.notes.description }}
 
 ## 编写原则
 
