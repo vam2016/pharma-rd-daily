@@ -1,0 +1,19 @@
+title: 医药研发每日简报
+description: 药物研发、临床试验与监管科学的每日专业简报
+url: "https://vam2016.github.io"
+baseurl: "/pharma-rd-daily"
+timezone: Asia/Shanghai
+lang: zh-CN
+markdown: kramdown
+kramdown:
+  input: Kramdown
+  math_engine: mathjax
+permalink: /briefs/:year-:month-:day/
+future: false
+exclude: [README.md, templates, Gemfile, Gemfile.lock]
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
