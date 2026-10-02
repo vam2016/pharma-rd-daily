@@ -7,13 +7,16 @@ for (const node of nodes) {
   fallback.textContent = display ? `\\[${node.textContent}\\]` : `\\(${node.textContent}\\)`;
   node.replaceWith(fallback);
 }
-if (nodes.length || document.querySelector('.math')) {
+// GitHub Pages' current Kramdown emits delimiters directly; older versions
+// emitted math/tex script nodes. Support both forms of generated Markdown.
+const mathText = document.querySelector('#report, .about')?.textContent || '';
+if (nodes.length || document.querySelector('.math') || mathText.includes('\\(') || mathText.includes('\\[')) {
   window.MathJax = {
     tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
     options: {skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
     startup: {pageReady() {
       return MathJax.startup.defaultPageReady().then(() => {
-        document.querySelectorAll('.math-source').forEach(el => el.classList.remove('math-source'));
+        document.querySelectorAll('.math-source').forEach(el => el.classList.remove('math-source', 'math-block'));
       });
     }}
   };
@@ -25,7 +28,7 @@ if (nodes.length || document.querySelector('.math')) {
     const notice = document.createElement('p');
     notice.className = 'math-notice';
     notice.textContent = '公式排版资源暂未加载，已保留公式原文。请联网后刷新页面。';
-    document.querySelector('#report')?.prepend(notice);
+    document.querySelector('#report, .about')?.prepend(notice);
   };
   document.head.append(script);
 }
