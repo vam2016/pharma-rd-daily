@@ -11,11 +11,11 @@
     "format": {"enum": ["daily_brief", "research_digest", "discussion", "study_note"]},
     "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 100},
     "title": {"type": "string", "minLength": 1, "maxLength": 200},
-    "date": {"type": "string", "format": "date-time", "pattern": "[+-]08:00$"},
+    "date": {"type": "string", "format": "date-time", "pattern": "\\+08:00$"},
     "summary": {"type": "string", "minLength": 1, "maxLength": 1200},
     "tags": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 60}, "uniqueItems": true},
     "body": {"type": "string", "minLength": 1},
-    "updated_at": {"type": "string", "format": "date-time", "pattern": "[+-]08:00$"},
+    "updated_at": {"type": "string", "format": "date-time", "pattern": "\\+08:00$"},
     "update_note": {"type": "string", "minLength": 1, "maxLength": 1200}
   },
   "allOf": [

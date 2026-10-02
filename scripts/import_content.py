@@ -73,6 +73,8 @@ def import_content(data, root, revise=False, dry_run=False):
     if section == "notes":
         require(not any(p != path for p in path.parent.glob(f"????-??-??-{slug}.md")), "此 slug 已有文章，请保留原始日期进行修订")
     history = ""
+    if "update_note" in data:
+        require(isinstance(data["update_note"], str) and data["update_note"].strip() and len(data["update_note"]) <= 1200, "update_note 必须为非空文本且不超过 1200 字符")
     if path.exists():
         require(revise, "文章已存在；修订请使用 --revise")
         require(data.get("update_note", "").strip() and data.get("updated_at"), "修订必须有 updated_at 与 update_note")
