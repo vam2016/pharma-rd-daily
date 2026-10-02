@@ -5,7 +5,7 @@ section: statistics
 format: research_digest
 permalink: /statistics/YYYY-MM-DD/
 week: "YYYY-MM-DD 至 YYYY-MM-DD"
-summary: "本期最有价值的方法学进展及其对设计或 SAP 的影响。"
+summary: "本期最有价值的方法学进展，以及其对临床研发、试验设计和统计决策的启示。"
 tags: ["estimand", "缺失数据"]
 ---
 
