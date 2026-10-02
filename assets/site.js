@@ -18,6 +18,8 @@ if (browser) {
       if (visible) count++;
     }
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.topic === selected)));
+    const upcoming = browser.querySelector('.upcoming-topics');
+    if (selected && upcoming?.querySelector(`[data-topic="${selected}"]`)) upcoming.open = true;
     const empty = browser.querySelector('#no-results');
     if (empty) empty.hidden = count > 0;
     const counter = browser.querySelector('#search-count');
@@ -46,18 +48,26 @@ if (browser) {
   filterBriefs();
 }
 const toc = document.querySelector('#toc');
-if (toc) document.querySelectorAll('#report h2').forEach((heading, index) => {
+const headings = [...document.querySelectorAll('#report h2, #report h3')];
+if (toc) headings.forEach((heading, index) => {
   if (!heading.id) heading.id = `section-${index + 1}`;
   const link = document.createElement('a');
   link.href = `#${heading.id}`;
-  link.textContent = heading.textContent;
+  link.textContent = heading.dataset.tocLabel || heading.textContent;
+  if (heading.tagName === 'H3') link.className = 'toc-subsection';
   toc.append(link);
 });
+const disclosure = document.querySelector('#toc-disclosure');
+if (disclosure && window.matchMedia) {
+  const mobile = window.matchMedia('(max-width: 800px)');
+  disclosure.open = !mobile.matches;
+  mobile.addEventListener('change', event => { disclosure.open = !event.matches; });
+}
 
 const status = document.querySelector('#action-status');
 document.querySelector('#copy-link')?.addEventListener('click', async () => {
   try {
-    await navigator.clipboard.writeText(location.href.split('#')[0]);
+    await navigator.clipboard.writeText(location.href);
     status.textContent = '链接已复制';
   } catch {
     status.textContent = '请从浏览器地址栏复制文章链接。';
@@ -86,5 +96,18 @@ if (toc && 'IntersectionObserver' in window) {
       else link.removeAttribute('aria-current');
     });
   }, {rootMargin: '-10% 0px -65% 0px'});
-  document.querySelectorAll('#report h2').forEach(heading => observer.observe(heading));
+  headings.forEach(heading => observer.observe(heading));
 }
+document.querySelectorAll('#report table, #report pre').forEach(element => {
+  element.tabIndex = 0;
+  element.setAttribute('aria-label', element.tagName === 'TABLE' ? '数据表格，可横向滚动' : '代码，可横向滚动');
+});
+let closedForPrint = [];
+window.addEventListener('beforeprint', () => {
+  closedForPrint = [...document.querySelectorAll('#report details:not([open]), .revision-note:not([open])')];
+  closedForPrint.forEach(element => { element.open = true; });
+});
+window.addEventListener('afterprint', () => {
+  closedForPrint.forEach(element => { element.open = false; });
+  closedForPrint = [];
+});

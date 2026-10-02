@@ -2,5 +2,19 @@
 layout: default
 ---
 {% assign section_key = page.section | default: 'rd' %}{% assign section = site.data.sections[section_key] %}
-<div class="post-shell"><div class="post-heading"><a class="back-link" href="{{ section.url | relative_url }}">← {{ section.heading }}</a><p class="eyebrow">{{ section.label }}</p><h1>{{ page.title | escape }}</h1><p class="issue-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>{% if page.week and section_key == 'statistics' %} · {{ page.week | escape }}{% endif %}</p><p class="post-summary">{{ page.summary | escape }}</p>{% if section_key == 'statistics' %}{% include topic-links.html post=page %}{% endif %}<div class="reading-tools"><button type="button" id="copy-link">复制链接</button><button type="button" id="print-report">打印 / 保存 PDF</button><a href="{{ section.feed | relative_url }}">订阅此栏目 ↗</a><span id="action-status" role="status" aria-live="polite"></span></div>
-{% if page.updated_at %}<div class="revision-note"><strong>内容已修订</strong> · <time datetime="{{ page.updated_at | date_to_xmlschema }}">{{ page.updated_at | date: '%Y-%m-%d %H:%M' }}</time>{% if page.update_note %}<p>{{ page.update_note | escape }}</p>{% endif %}</div>{% endif %}</div><div class="reading-layout"><aside class="toc"><p>本篇目录</p><nav id="toc" aria-label="文章目录"></nav></aside><article class="prose" id="report">{{ content }}<div class="report-end"><a href="{{ section.url | relative_url }}">继续阅读{{ section.title }} →</a></div></article></div></div>
+<div class="post-shell" id="article-top">
+  <div class="post-heading">
+    <a class="back-link" href="{{ section.url | relative_url }}">← {{ section.heading }}</a>
+    <p class="eyebrow">{{ section.label }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="issue-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%Y年%m月%d日' }}</time>{% if page.week and section_key == 'statistics' %} · {{ page.week | escape }}{% endif %}</p>
+    <p class="post-summary">{{ page.summary | escape }}</p>
+    {% if section_key == 'statistics' %}{% include topic-links.html post=page %}{% endif %}
+    <div class="reading-tools"><button type="button" id="copy-link">复制链接</button><button type="button" id="print-report">打印 / 保存 PDF</button><a href="{{ section.feed | relative_url }}">订阅此栏目 ↗</a><span id="action-status" role="status" aria-live="polite"></span></div>
+    {% if page.updated_at %}<details class="revision-note"><summary>修订说明 · <time datetime="{{ page.updated_at | date_to_xmlschema }}">{{ page.updated_at | date: '%Y-%m-%d %H:%M' }}</time></summary>{% if page.update_note %}<p>{{ page.update_note | escape }}</p>{% endif %}</details>{% endif %}
+  </div>
+  <div class="reading-layout">
+    <aside class="toc"><details id="toc-disclosure" open><summary>本篇目录</summary><nav id="toc" aria-label="文章目录"></nav><noscript><p>请向下阅读正文；交互目录需要 JavaScript。</p></noscript></details></aside>
+    <article class="prose" id="report">{{ content }}<div class="report-end"><a href="{{ section.url | relative_url }}">继续阅读{{ section.title }} →</a><a href="{{ '/about/' | relative_url }}">编写与核验原则</a><a href="#article-top">回到文章开头 ↑</a></div></article>
+  </div>
+</div>
