@@ -1,3 +1,9 @@
 # Safety check diagnostic
 
-plain diagnostic text
+## Markdown test
+
+- **bold**
+- `code`
+- [FDA](https://www.fda.gov/)
+
+> simple quote
