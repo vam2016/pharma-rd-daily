@@ -5,12 +5,13 @@
 <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
 <meta name="description" content="{{ page.summary | default: site.description | escape }}">
 <link rel="stylesheet" href="{{ '/assets/site.css' | relative_url }}?v=20261002-redesign">
+{% if page.home %}<link rel="stylesheet" href="{{ '/assets/home.css' | relative_url }}?v=20261003-flow">{% endif %}
 <link rel="icon" type="image/svg+xml" href="{{ '/assets/favicon.svg' | relative_url }}">
 <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | absolute_url }}">
 {% if page.section %}{% assign section = site.data.sections[page.section] %}<link rel="alternate" type="application/atom+xml" title="{{ section.title | escape }}" href="{{ section.feed | absolute_url }}">{% endif %}
 <link rel="canonical" href="{{ page.url | absolute_url }}">
 </head>
-<body class="{% if page.section %}section-{{ page.section }}{% else %}section-home{% endif %}">
+<body class="{% if page.section %}section-{{ page.section }}{% else %}section-home{% endif %}{% if page.home %} home-editorial{% endif %}">
 <a class="skip" href="#main">跳转到正文</a>
 <header class="site-header"><div class="header-inner"><a class="brand" href="{{ '/' | relative_url }}"><svg viewBox="0 0 32 32" width="32" height="32" aria-hidden="true"><path d="M6 25V7M6 25h21M10 20l6-8 5 4 6-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="12" r="2" fill="currentColor"/></svg><span>{{ site.title }}<small>临床证据与方法研究</small></span></a><nav aria-label="主导航">{% for entry in site.data.sections %}{% assign key = entry[0] %}{% assign section = entry[1] %}<a class="nav-{{ key }}" href="{{ section.url | relative_url }}"{% if page.section == key %} aria-current="page"{% endif %}>{{ section.title }}</a>{% endfor %}<a class="nav-subscribe" href="{{ '/subscribe/' | relative_url }}"{% if page.url == '/subscribe/' %} aria-current="page"{% endif %}>RSS 订阅</a></nav></div></header>
 <main id="main">{{ content }}</main>

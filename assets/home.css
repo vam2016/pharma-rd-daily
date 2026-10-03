@@ -1,0 +1,59 @@
+/* Open chapters and a quiet evidence ribbon, scoped to the homepage. */
+.home-editorial{--paper:#f8fbfa;--ink:#193c43;--accent:#186c69;--muted:#526c72;--method:#45678b;--line:#dfede9;background:var(--paper)}
+.home-editorial .site-header{background:transparent;border:0}
+.home-editorial .header-inner{min-height:108px}
+.home-editorial .brand{font-size:18px}
+.home-editorial .site-header nav a{font-size:13px}
+.home-editorial .site-header nav a:hover{background:transparent;text-decoration:underline;text-underline-offset:7px}
+.home-editorial main{padding-bottom:0}
+.opening{position:relative;isolation:isolate;padding:68px 0 72px;overflow:hidden}
+.opening-copy{position:relative;z-index:1;width:60%}
+.opening .eyebrow{font-size:12px;letter-spacing:.18em;margin-bottom:24px}
+.opening h1{margin:0;font:500 clamp(40px,4.8vw,64px)/1.32 var(--font);letter-spacing:-.035em}
+.opening h1 span{color:var(--accent)}
+.opening-description{font-size:16px;line-height:1.95;color:var(--muted);margin:25px 0 28px}
+.opening-links{display:flex;flex-wrap:wrap;gap:12px 32px}
+.opening-links a{display:inline-flex;align-items:center;gap:22px;min-height:44px;font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent)}
+.opening-links a:last-child{color:var(--method);border-color:var(--method)}
+.opening-links a span{transition:transform .2s}
+.opening-links a:hover span{transform:translateY(3px)}
+.evidence-flow{position:absolute;width:59%;height:auto;right:-5%;top:6%;z-index:-1;pointer-events:none}
+.research-chapter{display:grid;grid-template-columns:minmax(230px,1fr) minmax(0,1.9fr);gap:70px;padding:58px 0 62px;border-top:1px solid var(--line);scroll-margin-top:28px}
+.chapter-heading .eyebrow{margin-bottom:16px;font-size:11px;letter-spacing:.14em}
+.chapter-heading h2{margin:0;font:500 clamp(28px,2.7vw,36px)/1.4 var(--font);letter-spacing:-.02em}
+.chapter-heading h2 a{color:var(--ink);text-decoration:none}
+.chapter-heading h2 span{display:inline-block;font:400 23px var(--font);color:var(--accent);vertical-align:middle;transition:transform .2s}
+.chapter-heading h2 a:hover span{transform:translate(3px,-3px)}
+.chapter-description{max-width:270px;color:var(--muted);font-size:14px;line-height:1.9;margin:20px 0}
+.chapter-link{display:inline-flex;align-items:center;gap:20px;min-height:44px;font-size:13px;font-weight:600;text-decoration:none}
+.chapter-kicker{display:flex;align-items:center;gap:14px;font-size:11px;letter-spacing:.08em;color:var(--muted);margin:0 0 24px}
+.chapter-kicker span:first-child{color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.chapter-kicker span:first-child:before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+.home-editorial .brief-card{padding:0;border:0;background:transparent;box-shadow:none;border-radius:0}
+.home-editorial .brief-card .issue-meta{font:12px/1.8 var(--utility);color:var(--muted);margin:0 0 13px;letter-spacing:.03em}
+.home-editorial .brief-card h3{font-size:clamp(20px,2vw,26px);font-weight:500;line-height:1.55;letter-spacing:-.015em;margin:0 0 16px}
+.home-editorial .brief-card h3 a{color:var(--ink)}
+.home-editorial .brief-card .summary{font-size:15px;line-height:2;color:var(--muted);max-width:65ch;display:block;overflow:visible;-webkit-line-clamp:unset}
+.home-editorial .entry-arrow{color:var(--accent);font-size:18px;white-space:nowrap}
+.chapter-statistics{--accent:var(--method)}
+.chapter-statistics .brief-card .topic-links{display:none}
+.method-directory{margin-top:28px}
+.method-directory>p{font-size:11px;color:var(--muted);margin:0 0 10px;letter-spacing:.1em}
+.method-directory>div{display:flex;flex-wrap:wrap;column-gap:24px;row-gap:0}
+.method-directory a{display:inline-flex;align-items:center;gap:6px;min-height:40px;font-size:13px;text-decoration:none}
+.method-directory a span{font-size:11px;opacity:.6}
+.method-directory a:hover{text-decoration:underline}
+.notebook{position:relative;padding:48px 0 62px 36%;border-top:1px solid var(--line)}
+.notebook h2{font-size:28px;font-weight:500;letter-spacing:-.02em;margin:0 0 12px}
+.notebook h2 a{color:var(--ink);text-decoration:none}
+.notebook h2 span{color:var(--accent);font-size:20px}
+.notebook>p:not(.eyebrow){font-size:14px;color:var(--muted);margin:0 0 10px}
+.notebook .brief-card{margin:24px 0}
+.home-editorial .site-footer{background:transparent;border-top:1px solid var(--line)}
+.home-editorial .footer-inner{padding-top:28px;padding-bottom:32px}
+.home-editorial .footer-brand{font-size:14px}
+.home-editorial .site-footer p{font-size:12px}
+@media(min-width:1500px){.home-editorial{--content:1200px}.opening{padding-top:88px;padding-bottom:88px}}
+@media(max-width:900px){.home-editorial .header-inner{gap:20px}.home-editorial .site-header nav{gap:0}.home-editorial .site-header nav a{padding:8px}.research-chapter{gap:40px;grid-template-columns:minmax(200px,1fr) minmax(0,1.8fr)}.opening{padding:48px 0 56px}.opening-copy{width:75%}.evidence-flow{right:-15%;top:12%;opacity:.7}.notebook{padding-left:0}}
+@media(max-width:600px){.home-editorial .header-inner{padding:24px 0 0;display:block;min-height:0}.home-editorial .brand{font-size:17px}.home-editorial .site-header nav{display:flex;flex-wrap:wrap;gap:0 16px;margin-top:18px}.home-editorial .site-header nav a{background:none;border:0;border-radius:0;margin:0;padding:6px 0;min-height:44px;font-size:12px}.home-editorial .site-header nav .nav-subscribe{border:0;padding:6px 0;margin:0}.opening{padding:42px 0 44px}.opening-copy{width:100%}.opening h1{font-size:42px}.opening .eyebrow{font-size:11px;margin-bottom:20px}.opening-description{font-size:14px;margin-top:22px}.evidence-flow{width:90%;right:-39%;top:3%;opacity:.25}.opening-links{gap:22px}.opening-links a{font-size:13px;gap:15px}.research-chapter{display:block;padding:34px 0 40px}.chapter-heading h2{font-size:28px}.chapter-heading h2 br{display:none}.chapter-description{max-width:100%;margin:14px 0 4px}.chapter-content{margin-top:24px}.chapter-kicker{margin-bottom:16px}.home-editorial .brief-card h3{font-size:21px}.home-editorial .brief-card .summary{font-size:14px}.method-directory{margin-top:20px}.method-directory>div{column-gap:18px}.notebook{padding:34px 0 42px}.notebook h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.home-editorial *{transition:none!important}html:has(.home-editorial){scroll-behavior:auto}}
